@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'todoapp.urls'
@@ -141,10 +142,10 @@ USE_TZ = True
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #STATIC_URL = '/static/'
-
+STATIC_ROOT = none
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -152,10 +153,13 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = "tasks:list"
 
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
+#STATICFILES_FINDERS = (
+ #   'django.contrib.staticfiles.finders.FileSystemFinder',
+   # 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#)
+
+WHITENOISE_USE_FINDERS = True
+django_heroku.settings(locals())
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "/media/")
@@ -164,7 +168,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "/media/")
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = os.environ.get("EMAIL_HOST", 'smtp.example.com')
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", 'wrong_user@example.com')
+#EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", 'wrong_user@example.com')
+EMAIL_HOST_USER = 'livadii17@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", 'wrong_password')
 EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "25"))
 EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS", ""))
