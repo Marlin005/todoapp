@@ -168,8 +168,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "/media/")
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = os.environ.get("EMAIL_HOST", 'smtp.example.com')
-#EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", 'wrong_user@example.com')
-EMAIL_HOST_USER = 'livadii17@gmail.com'
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", 'wrong_user@example.com')
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", 'wrong_password')
 EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "25"))
 EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS", ""))
